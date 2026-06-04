@@ -1,0 +1,26 @@
+{
+  "name": "@epheliagroup/pay-with-b1m",
+  "version": "1.0.0",
+  "description": "B1M Payment SDK — drop-in payment widget for merchants",
+  "main": "dist/pay-with-b1m.dist.js",
+  "files": [
+    "dist/pay-with-b1m.dist.js",
+    "dist/pay-with-b1m.dist.js.map",
+    "dist/pay-with-b1m.dist.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EpheliaGroup/pay-with-b1m.git"
+  },
+  "keywords": [
+    "b1m",
+    "payment",
+    "sdk",
+    "widget",
+    "checkout",
+    "stripe",
+    "ephelia"
+  ],
+  "author": "Ephelia Group",
+  "license": "MIT"
+}
