@@ -1,0 +1,36 @@
+# Claude PR Review — Caller Workflow
+#
+# Copy this file to .github/workflows/claude-pr-review.yml in any repo.
+#
+# Required secret: ANTHROPIC_API_KEY
+#   - Set as an org-level secret (GitHub Team plan), or
+#   - Add per-repo in Settings > Secrets > Actions
+#
+# Prerequisites:
+#   - Claude Code GitHub App installed on the org (https://github.com/apps/claude)
+#   - ephelia-engineering-standards repo allows workflow access from other repos
+#     (Settings > Actions > General > "Access" section)
+
+name: Claude PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  claude-review:
+    if: |
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude'))
+    uses: EpheliaGroup/ephelia-engineering-standards/.github/workflows/claude-pr-review.yml@main
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      id-token: write
+    secrets: inherit
